@@ -13,14 +13,17 @@ class ShowPost extends Component {
         .then(() => {
             this.props.history.push('/');
         })
-        // .catch((err) => console.log('ERROR HAPPENS: ',err))
+        .catch((err) => console.log('ERROR HAPPENS: ', err))
+        // fetch('https://mypostapi.herokuapp.com/posts/5b4dcf77020cc20014a62d7d', {
+        //     method: 'DELETE'
+        // }).then(() => this.props.history.push('/')).catch(err => console.log('Khanh Dang: ', err))
     }
 
     loadTimeout = () => {
-        setTimeout(() => {
-            this.props.history.push('/');
-            alert('Sorry! Post is not found.')
-        }, 5000);
+        // setTimeout(() => {
+        //     this.props.history.push('/');
+        //     alert('Sorry! Post is not found.')
+        // }, 3000);
     }
 
     render() {  

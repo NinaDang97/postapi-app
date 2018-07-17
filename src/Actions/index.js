@@ -1,6 +1,6 @@
 import axios from 'axios';
-const ROOT_URL = 'https://mypostapi.herokuapp.com';
-// const ROOT_URL = 'http://localhost:8080';
+// const ROOT_URL = 'https://mypostapi.herokuapp.com';
+const ROOT_URL = 'http://localhost:8080';
 
 export const FETCH_POSTS = 'FETCH_POSTS';
 export const CREATE_POST = 'CREATE_POST';
@@ -33,6 +33,7 @@ export function fetchPost(postId) {
 
 export function deletePost(postId) {
     const request = axios.delete(`${ROOT_URL}/posts/${postId}`);
+    // console.log(request);
     return {
         type: DELETE_POST,
         payload: request
