@@ -1,0 +1,36 @@
+.postItem {
+    margin: 25px 0;
+    padding: 10px 25px;
+    border: 1px solid black;
+    line-height: 25px;
+}
+
+.postTitle {
+    font-weight: 600;
+}
+
+.postCategory {
+    padding-left: 10px;
+    border: 1px solid black;
+    border-left: 3px solid black;
+}
+
+.postDate {
+    text-align: right;
+    font-size: .7em;
+    font-style: italic;
+    color: rgb(134, 132, 132);
+}
+
+/* SELECT POSTITEM */
+.postItem:hover {
+    cursor: pointer;
+    animation-name: posthover;
+    animation-duration: .3s;
+    border-left: 15px solid rgb(148, 146, 146);;
+}
+
+@keyframes posthover {
+    50% {border-left: 15px solid black;}
+    100% {border-left: 15px solid rgb(148, 146, 146);}
+}

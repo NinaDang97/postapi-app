@@ -1,0 +1,11 @@
+form input, 
+form textarea {
+    width: 100%;
+}
+
+form .err-msg {
+    color: red;
+    font-style: italic;
+    font-size: .8em;
+    margin-bottom: 15px;
+}
