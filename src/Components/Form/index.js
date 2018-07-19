@@ -4,14 +4,20 @@ import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
 import { Field, reduxForm } from 'redux-form';
 import Input from './Input';
-import { createPost } from '../../Actions';
+import { createPost, editPost } from '../../Actions';
 import { handleValidate as validate } from './Validate';
 
 class Form extends Component {
     submit = (value) => {
-        this.props.getPostCreate(value)
+        const { id } = this.props.match.params;
+        return this.props.action === 'POST'
+        ? this.props.getPostCreate(value)
         .then(() => {
             this.props.history.push('/');
+        })
+        : this.props.getPostEdit(id, {...value, create_date: new Date().toISOString()})
+        .then(() => {
+            this.props.history.push(`/posts/${id}`);
         })
     }
 
@@ -39,9 +45,22 @@ class Form extends Component {
     }
 }
 
+const mapStateToProps = state => {
+    // console.log(state);
+    const { post } = state.posts;
+    return {
+        initialValues: {
+            title: post.title,
+            category: post.category,
+            content: post.content
+        }
+    }
+}
+
 const mapDispatchToProps = dispatch => {
     return {
-        getPostCreate: (newPost) => dispatch(createPost(newPost))
+        getPostCreate: (newPost) => dispatch(createPost(newPost)),
+        getPostEdit: (postId, post) => dispatch(editPost(postId, post))
     }
 }
 
@@ -49,8 +68,8 @@ const mapDispatchToProps = dispatch => {
 //reduxForm: only arg is form config
 Form = reduxForm({
     form: 'postForm',
-    validate
+    validate,
 })(Form);
-Form = connect(null, mapDispatchToProps)(Form);
+Form = connect(mapStateToProps, mapDispatchToProps)(Form);
 
 export default withRouter(Form);

@@ -11,8 +11,9 @@ class App extends Component {
       <div className="App">
         <Switch>
           <Route exact path = '/' component={List} />
-          <Route exact path = '/posts/new' component={Form} />
+          <Route exact path = '/posts/new' render={(props) => <Form {...props} action='POST' />}  />
           <Route exact path = '/posts/:id' component={ShowPost} />
+          <Route exact path='/posts/:id/edit' render={(props) => <Form {...props} action='PUT' />} />
         </Switch>
       </div>
     );

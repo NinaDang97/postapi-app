@@ -10,10 +10,20 @@ class List extends Component {
         this.props.fetchPosts();
     }
 
+    fetchDetails = (allPosts, resTime) => {
+        return (
+            <div>
+                {allPosts.length} results. Fetch in { resTime.toFixed(2) } seconds.
+            </div>
+        )
+    }
+
     render(){
         const t1 = performance.now();
         const {allPosts} = this.props;
-        const renderList = allPosts.map(post => <Post key={post._id} {...post} />);
+        const renderList = allPosts
+        ? allPosts.map(post => <Post key={post._id} {...post} />)
+        : null;
         const t2 = performance.now();
         const resTime = t2 - t1;
         return (
@@ -23,7 +33,9 @@ class List extends Component {
                 </Link>
                 <h4>List of Posts</h4>
                 {/* Info: total result, response time */}
-                {allPosts.length} results. Fetch in { resTime.toFixed(2) } seconds.
+                {allPosts 
+                    ? this.fetchDetails(allPosts, resTime) 
+                    : this.fetchDetails([], resTime)}
                 <div className='postList'>
                     {renderList}
                 </div>

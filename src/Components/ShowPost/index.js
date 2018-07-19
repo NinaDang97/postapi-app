@@ -14,16 +14,6 @@ class ShowPost extends Component {
             this.props.history.push('/');
         })
         .catch((err) => console.log('ERROR HAPPENS: ', err))
-        // fetch('https://mypostapi.herokuapp.com/posts/5b4dcf77020cc20014a62d7d', {
-        //     method: 'DELETE'
-        // }).then(() => this.props.history.push('/')).catch(err => console.log('Khanh Dang: ', err))
-    }
-
-    loadTimeout = () => {
-        // setTimeout(() => {
-        //     this.props.history.push('/');
-        //     alert('Sorry! Post is not found.')
-        // }, 3000);
     }
 
     render() {  
@@ -32,7 +22,6 @@ class ShowPost extends Component {
             return (
                 <div>
                     Loading...
-                   {post && this.loadTimeout()}
                 </div>
             )
         } else {
@@ -44,9 +33,11 @@ class ShowPost extends Component {
                     <p>{post.content}</p>
                     <div><strong>Posted on {post.create_date.substring(0, 19).replace('T', ', ')}</strong></div>
                     <button onClick={this.getPostDelete}>Delete</button>
+                    <Link to={`/posts/${post._id}/edit`}><button>Edit</button></Link>
                 </div>
             )
         }
+        
     }
 }
 
