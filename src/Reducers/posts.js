@@ -7,7 +7,7 @@ const INITIAL_STATE = {
 const PostsReducer = (state = INITIAL_STATE, action) => {
     switch(action.type){
         case Types.FETCH_POSTS:
-            return {...state, all: action.payload.data}; //reducers need to return new object
+            return {...state, all: action.payload.data, post: null}; //reducers need to return new object
         case Types.FETCH_POST:
             return {...state, post: action.payload.data};
         default:

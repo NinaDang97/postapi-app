@@ -50,9 +50,9 @@ const mapStateToProps = state => {
     const { post } = state.posts;
     return {
         initialValues: {
-            title: post.title,
-            category: post.category,
-            content: post.content
+            title: post ? post.title : ' ',
+            category: post ? post.category : ' ',
+            content: post ? post.content : ' '
         }
     }
 }

@@ -41,7 +41,6 @@ export function deletePost(postId) {
 }
 
 export function editPost(postId, editPost) {
-    console.log(editPost);
     const request = axios({
         method: 'PUT',
         url: `${ROOT_URL}/posts/${postId}`, 

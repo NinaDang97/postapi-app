@@ -18,7 +18,7 @@ class ShowPost extends Component {
 
     render() {  
         const { post } = this.props;
-        if(!post || !post._id){
+        if(!post){
             return (
                 <div>
                     Loading...
