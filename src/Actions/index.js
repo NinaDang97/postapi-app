@@ -1,6 +1,6 @@
 import axios from 'axios';
-const ROOT_URL = 'https://mypostapi.herokuapp.com';
-// const ROOT_URL = 'http://localhost:8080';
+const ROOT_URL = 'https://mypostapi.herokuapp.com/api/posts';
+// const ROOT_URL = 'http://localhost:8080/api/posts';
 
 export const FETCH_POSTS = 'FETCH_POSTS';
 export const CREATE_POST = 'CREATE_POST';
@@ -9,7 +9,7 @@ export const DELETE_POST = 'DELETE_POST';
 export const EDIT_POST = 'EDIT_POST';
 
 export const fetchPosts = () => {
-    const request = axios.get(`${ROOT_URL}/posts`);
+    const request = axios.get(`${ROOT_URL}`);
     return {
         type: FETCH_POSTS,
         payload: request
@@ -17,7 +17,7 @@ export const fetchPosts = () => {
 }
 
 export function createPost(newPost) {
-    const request = axios.post(`${ROOT_URL}/posts`, newPost);
+    const request = axios.post(`${ROOT_URL`, newPost);
     return {
         type: CREATE_POST,
         payload: request
@@ -25,7 +25,7 @@ export function createPost(newPost) {
 }
 
 export function fetchPost(postId) {
-    const request = axios.get(`${ROOT_URL}/posts/${postId}`);
+    const request = axios.get(`${ROOT_URL}/${postId}`);
     return {
         type: FETCH_POST,
         payload: request
@@ -33,7 +33,7 @@ export function fetchPost(postId) {
 }
 
 export function deletePost(postId) {
-    const request = axios.delete(`${ROOT_URL}/posts/${postId}`);
+    const request = axios.delete(`${ROOT_URL}/${postId}`);
     return {
         type: DELETE_POST,
         payload: request
@@ -43,7 +43,7 @@ export function deletePost(postId) {
 export function editPost(postId, editPost) {
     const request = axios({
         method: 'PUT',
-        url: `${ROOT_URL}/posts/${postId}`, 
+        url: `${ROOT_URL}/${postId}`, 
         data: editPost 
     });
     return {
